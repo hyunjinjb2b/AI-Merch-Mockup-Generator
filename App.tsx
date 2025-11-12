@@ -58,10 +58,10 @@ const App: React.FC = () => {
       <main className="max-w-7xl mx-auto">
         <header className="text-center mb-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-600">
-            AI 상품 목업 생성기
+            AI상품 리스트 생성기
           </h1>
           <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-            로고를 업로드하고 목업을 설명하면 Gemini AI가 즉시 만들어 드립니다.
+            로고를 업로드하고 생성하고 싶은 상품 리스트를 설명하면 Gemini AI가 즉시 만들어 드립니다.
           </p>
         </header>
 
@@ -74,12 +74,12 @@ const App: React.FC = () => {
             </div>
             
             <div>
-              <label htmlFor="prompt" className="text-lg font-semibold mb-2 block text-gray-300">2. 목업 설명하기</label>
+              <label htmlFor="prompt" className="text-lg font-semibold mb-2 block text-gray-300">2. 상품 리스트 설명하기</label>
               <textarea
                 id="prompt"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
-                placeholder="예: '마네킹이 들고 있는 검은색 티셔츠에 이 로고를 넣어줘' 또는 '이 이미지에 복고풍 80년대 필터를 추가해줘'"
+                placeholder="예: '이 로고가 들어간 흰색 머그컵, 검은색 후드티, 파란색 모자 리스트' 또는 '다양한 색상의 티셔츠에 이 디자인을 적용한 상품 리스트'"
                 className="w-full h-32 p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-colors placeholder-gray-500"
                 disabled={isLoading}
               />
@@ -93,7 +93,7 @@ const App: React.FC = () => {
               className="w-full flex items-center justify-center gap-2 px-6 py-4 text-lg font-bold text-white bg-gradient-to-r from-cyan-500 to-indigo-600 rounded-lg hover:from-cyan-600 hover:to-indigo-700 transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-cyan-500"
             >
               <MagicWandIcon />
-              {isLoading ? '생성 중...' : '목업 생성'}
+              {isLoading ? '생성 중...' : '리스트 생성'}
             </button>
           </div>
 

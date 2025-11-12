@@ -31,7 +31,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ originalImageUrl, generat
     if (!generatedImageUrl) return;
     const link = document.createElement('a');
     link.href = generatedImageUrl;
-    link.download = '생성된-목업.png';
+    link.download = '생성된-리스트.png';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
