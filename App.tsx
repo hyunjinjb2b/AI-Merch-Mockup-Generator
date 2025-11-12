@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { editImageWithGemini } from './services/geminiService';
 import { fileToGenerativePart } from './utils/fileUtils';
@@ -30,7 +29,7 @@ const App: React.FC = () => {
 
   const handleGenerate = useCallback(async () => {
     if (!originalImage || !prompt) {
-      setError('Please upload an image and provide a prompt.');
+      setError('이미지를 업로드하고 프롬프트를 입력해주세요.');
       return;
     }
 
@@ -48,7 +47,7 @@ const App: React.FC = () => {
       setGeneratedImage(`data:image/png;base64,${generatedImageData}`);
     } catch (err) {
       console.error(err);
-      setError(err instanceof Error ? err.message : 'An unknown error occurred.');
+      setError(err instanceof Error ? err.message : '알 수 없는 오류가 발생했습니다.');
     } finally {
       setIsLoading(false);
     }
@@ -59,10 +58,10 @@ const App: React.FC = () => {
       <main className="max-w-7xl mx-auto">
         <header className="text-center mb-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-600">
-            AI Merch Mockup Generator
+            AI 상품 목업 생성기
           </h1>
           <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-            Upload a logo, describe the mockup, and let Gemini AI create it for you instantly.
+            로고를 업로드하고 목업을 설명하면 Gemini AI가 즉시 만들어 드립니다.
           </p>
         </header>
 
@@ -70,17 +69,17 @@ const App: React.FC = () => {
           {/* Input Column */}
           <div className="flex flex-col gap-6 p-6 bg-gray-800/50 rounded-2xl border border-gray-700 backdrop-blur-sm">
             <div>
-              <label className="text-lg font-semibold mb-2 block text-gray-300">1. Upload Your Logo/Design</label>
+              <label className="text-lg font-semibold mb-2 block text-gray-300">1. 로고/디자인 업로드</label>
               <ImageUploader onImageSelect={handleImageSelect} previewUrl={originalImagePreview} />
             </div>
             
             <div>
-              <label htmlFor="prompt" className="text-lg font-semibold mb-2 block text-gray-300">2. Describe Your Mockup</label>
+              <label htmlFor="prompt" className="text-lg font-semibold mb-2 block text-gray-300">2. 목업 설명하기</label>
               <textarea
                 id="prompt"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
-                placeholder="e.g., 'Place this logo on a black t-shirt held by a mannequin' or 'Add a retro 80s filter to this image'"
+                placeholder="예: '마네킹이 들고 있는 검은색 티셔츠에 이 로고를 넣어줘' 또는 '이 이미지에 복고풍 80년대 필터를 추가해줘'"
                 className="w-full h-32 p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-colors placeholder-gray-500"
                 disabled={isLoading}
               />
@@ -94,13 +93,13 @@ const App: React.FC = () => {
               className="w-full flex items-center justify-center gap-2 px-6 py-4 text-lg font-bold text-white bg-gradient-to-r from-cyan-500 to-indigo-600 rounded-lg hover:from-cyan-600 hover:to-indigo-700 transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-cyan-500"
             >
               <MagicWandIcon />
-              {isLoading ? 'Generating...' : 'Generate Mockup'}
+              {isLoading ? '생성 중...' : '목업 생성'}
             </button>
           </div>
 
           {/* Output Column */}
           <div className="p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
-            <h2 className="text-lg font-semibold mb-4 text-gray-300">3. Your Result</h2>
+            <h2 className="text-lg font-semibold mb-4 text-gray-300">3. 결과</h2>
             <ResultDisplay
               originalImageUrl={originalImagePreview}
               generatedImageUrl={generatedImage}

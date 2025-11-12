@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Spinner from './Spinner';
 import { DownloadIcon } from './icons/DownloadIcon';
@@ -32,7 +31,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ originalImageUrl, generat
     if (!generatedImageUrl) return;
     const link = document.createElement('a');
     link.href = generatedImageUrl;
-    link.download = 'generated-mockup.png';
+    link.download = '생성된-목업.png';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -40,8 +39,8 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ originalImageUrl, generat
 
   return (
     <div className="w-full flex flex-col md:flex-row gap-6">
-      <ImageBox title="Original" imageUrl={originalImageUrl} />
-      <ImageBox title="Generated" imageUrl={generatedImageUrl}>
+      <ImageBox title="원본" imageUrl={originalImageUrl} />
+      <ImageBox title="생성된 이미지" imageUrl={generatedImageUrl}>
         {isLoading && (
             <div className="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-sm">
                 <Spinner />
@@ -53,7 +52,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ originalImageUrl, generat
               className="absolute bottom-3 right-3 flex items-center gap-2 px-3 py-2 text-sm font-semibold text-white bg-gray-900/60 rounded-md hover:bg-gray-900/80 transition-colors backdrop-blur-sm"
             >
               <DownloadIcon />
-              Download
+              다운로드
             </button>
         )}
       </ImageBox>
