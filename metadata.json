@@ -1,0 +1,5 @@
+{
+  "name": "AI Merch Mockup Generator",
+  "description": "Upload your logo or design, and use text prompts to create on-demand merchandise mockups. The AI places your design on various products, shows you a preview, and lets you export the result.",
+  "requestFramePermissions": []
+}
